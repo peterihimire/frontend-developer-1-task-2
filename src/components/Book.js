@@ -8,11 +8,11 @@ const Book = (props) => {
       <div className="img-container">
         <img src={bookCover} alt="book" />
       </div>
-      <div>
-        <h4>{props.singleBook.authors}</h4>
-        <h6>{props.singleBook.title}</h6>
-        <h6>{props.singleBook.publisher}</h6>
-        <p>{props.singleBook.year}</p>
+      <div className='book-info'>
+        <h4>{props.singleBook.title}</h4>
+        <h6>Author(s) :<span>{props.singleBook.authors}</span>  </h6>
+        <h6>Published :<span>{props.singleBook.publishedDate}</span> </h6>
+      
       </div>
     </article>
   );
@@ -20,15 +20,3 @@ const Book = (props) => {
 
 export default Book;
 
-// import React, {Component} from 'react';
-
-// class Book extends Component{
-//   render(){
-//     return(
-//       <div>
-//         <h4>This is from Book Component</h4>
-//       </div>
-//     )
-//   }
-// }
-// export default Book;

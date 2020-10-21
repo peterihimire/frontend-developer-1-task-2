@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 // import Banner from './components/Banner';
-// import Book from "./components/Book";
-import BookList from './components/BookList';
 // import Footer from "./components/Footer";
+import BookList from "./components/BookList";
 import Navbar from "./components/Navbar";
 import Form from "./components/Form";
 
@@ -15,6 +14,7 @@ class App extends Component {
     bookOne: "",
   };
 
+  // For the form submit
   handleSubmit = (event) => {
     event.preventDefault();
     // console.log(bookOne);
@@ -37,9 +37,6 @@ class App extends Component {
           let publishedDate = item.volumeInfo.publishedDate;
           let publisher = item.volumeInfo.publisher;
           let title = item.volumeInfo.title;
-          // let image = item.volumeInfo.imageLinks.thumbnail;
-
-          // console.log(item.volumeInfo.authors);
 
           let book = {
             authors,
@@ -52,7 +49,6 @@ class App extends Component {
             publishedDate,
             publisher,
             title,
-            // image,
           };
           console.log(book);
           return book;
@@ -72,18 +68,14 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
+  // For the form input
   handleChange = (event) => {
     event.preventDefault();
     const bookg = event.target.value;
 
     this.setState({ bookOne: bookg });
-
     console.log(bookg);
   };
-
-  // componentDidMount() {
-  //   this.getBooks();
-  // }
 
   render() {
     return (
@@ -189,3 +181,7 @@ export default App;
 //     })
 //     .catch((err) => console.log(err));
 // };
+
+// componentDidMount() {
+//   this.getBooks();
+// }
