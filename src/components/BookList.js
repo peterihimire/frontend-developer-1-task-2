@@ -1,10 +1,19 @@
 import React from "react";
+import Book from "../components/Book";
 
-const BookList = () => {
+const BookList = (props) => {
+  console.log(props.bookInfo)
   return (
-    <div>
-      <h4>This is from the BookList component</h4>
-    </div>
+    <section className="booklist">
+      <div className="booklist-center">
+        <div className="booklist-container">
+          {props.bookInfo.map(book => {
+            console.log(book, book.id)
+            return <Book key={book.id} singleBook={book} />
+          })}
+        </div>
+      </div>
+    </section>
   );
 };
 
