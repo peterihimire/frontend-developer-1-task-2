@@ -193,6 +193,10 @@ body {
   transform: scale(1);
 }
 @media screen and (min-width: 768px) {
+ 
+}
+
+@media screen and (min-width: 1170px){
   .navbar {
     position: fixed;
     top: 0;
@@ -280,13 +284,13 @@ form{
 input[type=text]{
   padding: 1rem 4rem;
   border: solid 1px var(--primaryColor);
-  border-radius: 0.5rem 0 0 .5rem;
+  /* border-radius: 0.5rem 0 0 .5rem; */
 }
 button{
   padding: 1rem 2rem;
   background-color: var(--primaryColor);
   border:none;
-  border-radius: 0 .5rem .5rem 0;
+  /* border-radius: 0 .5rem .5rem 0; */
   color: var(--mainWhite);
   text-transform: capitalize;
   font-weight: 700;
@@ -298,7 +302,12 @@ button{
 .book{
   background-color: var(--mainWhite);
   box-shadow: var(--lightShadow);
-  border-radius: .5rem;
+  /* box-shadow: 0 0 1.2rem 0 rgba(29, 28, 28, 0.849); */
+  /* border-radius: .5rem; */
+}
+.book .img-container img{
+  width: 100%;
+  /* border-radius: .5rem; */
 }
 .book-info{
   padding: 1rem;
@@ -307,7 +316,6 @@ button{
 /* end of book */
 
 /* booklist */
-
 .booklist {
   padding: 0 2rem 5rem 2rem;
 }
