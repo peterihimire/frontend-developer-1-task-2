@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-// import Banner from './components/Banner';
+import Banner from "./components/Banner";
 // import Footer from "./components/Footer";
 import BookList from "./components/BookList";
 import Navbar from "./components/Navbar";
@@ -81,6 +81,7 @@ class App extends Component {
     return (
       <>
         <Navbar />
+        <Banner />
         <Form forInput={this.handleChange} forForm={this.handleSubmit} />
         <BookList bookInfo={this.state.books} />
         {/* <Footer /> */}

@@ -16,7 +16,6 @@ const Navbar = (props) => {
                   ben<span>kih</span>{" "}
                 </strong>
               </a>
-            
             </div>
             <ul className="navbar-links">
               <li className="navbar-item">
@@ -30,13 +29,13 @@ const Navbar = (props) => {
                 </a>
               </li>
             </ul>
-            <button
-                className="navbar-btn"
-                type="button"
-                onClick={props.clicked}
-              >
-                <img src={menuImg} alt="menu-icon" />
-              </button>
+            <div
+              className="navbar-btn"
+              // type="button"
+              onClick={props.clicked}
+            >
+              <img src={menuImg} alt="menu-icon" />
+            </div>
           </div>
         </div>
       </nav>
