@@ -8,15 +8,17 @@ const Book = (props) => {
       <div className="img-container">
         <img src={bookCover} alt="book" />
       </div>
-      <div className='book-info'>
+      <div className="book-info">
         <h4>{props.singleBook.title}</h4>
-        <h6>Author(s) :<span>{props.singleBook.authors}</span>  </h6>
-        <h6>Published :<span>{props.singleBook.publishedDate}</span> </h6>
-      
+        <h6>
+          Author(s) :<span className='author'>{props.singleBook.authors}</span>{" "}
+        </h6>
+        <h6>
+          Published :<span className='published'>{props.singleBook.publishedDate}</span>{" "}
+        </h6>
       </div>
     </article>
   );
 };
 
 export default Book;
-

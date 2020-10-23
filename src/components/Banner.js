@@ -8,8 +8,8 @@ function Banner() {
           <div className="banner-container">
             <h1>BOOK SEARCH</h1>
             <p>
-              A simple book search with google book API. To search, simple input
-              the ISBN in the input field and click on search.{" "}
+              A simple book search app. To search, simple input
+              the ISBN number into the input field and click  search.{" "}
             </p>
           </div>
         </div>

@@ -1,10 +1,10 @@
 :root {
   font-size: 62.5%;
-  --primaryColor: #73b9e2d3;
-  --darkGrey: #808080;
+  /* --primaryColor: #73b9e2d3; */
+ /* --darkGrey: #808080;
   --mainGrey: #fafafa;
   --mainWhite: #ffffff;
-  --mainBlack: #444444;
+  --mainBlack: #444444; */
   --mainTransition: all 0.5s linear;
   --largeFont: 8rem;
   --mediumFont: 6rem;
@@ -13,6 +13,17 @@
   --lineHeight: 1.3;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
   --darkShodow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+
+  --primaryColor: #ff5c00;
+  --vasitiBlack: #25201d;
+  --mainGrey: #e5e5e5;
+  --darkGreen: #049a01;
+  --lightGreen: #f0ffee;
+  --darkGrey: #494949;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --darkBlue: #0d019a;
+  --lightBlue: #eef8ff;
 }
 
 * {
@@ -93,15 +104,14 @@ body {
   font-weight: bold;
   text-align: left;
 }
-.mobile-nav-header{
+.mobile-nav-header {
   background-color: var(--primaryColor);
 }
-.mobile-nav-header h4{
+.mobile-nav-header h4 {
   font-size: var(--smallFont);
   text-align: center;
   padding: 4rem 0;
   color: var(--mainWhite);
-
 }
 .mobile-nav-overlay {
   position: fixed;
@@ -199,12 +209,11 @@ body {
   transform: scale(1);
 }
 @media screen and (min-width: 768px) {
-  .mobile-nav-header h4{
+  .mobile-nav-header h4 {
     font-size: var(--mediumFont);
     text-align: center;
     padding: 4rem 0;
     color: var(--mainWhite);
-  
   }
 }
 
@@ -327,6 +336,7 @@ form {
 input[type="text"] {
   padding: 1rem 4rem;
   border: solid 1px var(--primaryColor);
+  border-radius: .5rem 0 0 .5rem;
 }
 button {
   padding: 1rem 2rem;
@@ -335,6 +345,7 @@ button {
   color: var(--mainWhite);
   text-transform: capitalize;
   font-weight: 700;
+  border-radius: 0 .5rem  .5rem 0;
 }
 
 /***** End of Search *****/
@@ -350,6 +361,28 @@ button {
 .book-info {
   padding: 1rem;
   text-align: center;
+}
+.book-info h4{
+  color: var(--vasitiBlack);
+}
+.book-info h6{
+  text-transform: uppercase;
+  color: var(--primaryColor);
+  margin: .2rem 0;
+}
+.author{
+  color: var(--darkBlue);
+  background-color: var(--lightBlue);
+  padding: .2rem;
+  /* line-height: var(--lineHeight); */
+  text-transform: capitalize;
+}
+
+.published{
+  color: var(--darkGreen);
+  background-color: var(--lightGreen);
+  padding: .2rem;
+  text-transform: capitalize;
 }
 
 /***** End of Book *****/
