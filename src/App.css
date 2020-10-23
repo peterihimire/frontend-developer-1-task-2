@@ -1,5 +1,3 @@
-
-
 :root {
   font-size: 62.5%;
   --primaryColor: #73b9e2d3;
@@ -25,7 +23,7 @@
 
 /* globals */
 body {
-  padding: 65px 0 0 0;
+  padding: 60px 0 0 0;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--mainGrey);
   overflow-x: hidden;
@@ -35,7 +33,7 @@ body {
 
 /* end of globals */
 
-/* navbar */
+/***** Navbar *****/
 .navbar {
   position: fixed;
   top: 0;
@@ -51,7 +49,7 @@ body {
   max-width: 117rem;
   margin: 0 auto;
 }
-.first-nav {
+.nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,7 +64,6 @@ body {
 .navbar-header {
   display: flex;
   justify-content: space-between;
-
 }
 .navbar-btn {
   background: none;
@@ -96,6 +93,16 @@ body {
   font-weight: bold;
   text-align: left;
 }
+.mobile-nav-header{
+  background-color: var(--primaryColor);
+}
+.mobile-nav-header h4{
+  font-size: var(--smallFont);
+  text-align: center;
+  padding: 4rem 0;
+  color: var(--mainWhite);
+
+}
 .mobile-nav-overlay {
   position: fixed;
   top: 0;
@@ -103,7 +110,7 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(94, 93, 93, 0.726);
-  z-index: 1;
+  z-index: 3;
   transition: all 0.1s linear;
   visibility: hidden;
 }
@@ -114,14 +121,15 @@ body {
 .mobile-nav {
   position: fixed;
   background: var(--mainWhite);
-  width: 100%;
-  top: 85px;
+  width: 50%;
+  height: 100%;
+  top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   color: var(--mainBlack);
   box-shadow: 0 0 1.2rem 0 rgba(29, 28, 28, 0.849);
   transition: all 0.5s linear;
-  transform: translateY(-200%);
+  transform: translateX(-200%);
 }
 .mobile-nav-item {
   padding: 1rem 0;
@@ -191,10 +199,16 @@ body {
   transform: scale(1);
 }
 @media screen and (min-width: 768px) {
- 
+  .mobile-nav-header h4{
+    font-size: var(--mediumFont);
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--mainWhite);
+  
+  }
 }
 
-@media screen and (min-width: 1170px){
+@media screen and (min-width: 1170px) {
   .navbar {
     position: fixed;
     top: 0;
@@ -258,39 +272,41 @@ body {
     padding: 0 0 0 0rem;
   }
 }
-/* end of navbar */
 
-/* banner */
-.banner{
-  padding: 5rem 2rem;
+/***** End of Navbar *****/
+
+/***** Banner *****/
+.banner {
+  padding: 8rem 2rem;
   background-color: var(--primaryColor);
   color: var(--mainWhite);
 }
-.banner h1{
+.banner h1 {
   font-size: var(--smallFont);
 }
-.banner p{
+.banner p {
   font-weight: normal;
 }
-.banner-container{
+.banner-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-@media screen and (min-width: 768px){
-  .banner h1{
+@media screen and (min-width: 768px) {
+  .banner h1 {
     font-size: var(--largeFont);
   }
-  .banner p{
+  .banner p {
     font-weight: bold;
   }
 }
-/* end of banner */
 
-/* form section */
-.form-section{
+/***** End of Banner *****/
+
+/***** Search  *****/
+.form-section {
   padding: 5rem 2rem;
 }
 
@@ -299,45 +315,46 @@ body {
   margin: 0 auto;
   width: 100%;
 }
-.form-container{
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100% ;
+  width: 100%;
 }
-form{
+form {
   display: flex;
 }
-input[type=text]{
+input[type="text"] {
   padding: 1rem 4rem;
   border: solid 1px var(--primaryColor);
 }
-button{
+button {
   padding: 1rem 2rem;
   background-color: var(--primaryColor);
-  border:none;
+  border: none;
   color: var(--mainWhite);
   text-transform: capitalize;
   font-weight: 700;
-
 }
-/* end of form section */
 
-/* book */
-.book{
+/***** End of Search *****/
+
+/***** Book *****/
+.book {
   background-color: var(--mainWhite);
   box-shadow: var(--lightShadow);
 }
-.book .img-container img{
+.book .img-container img {
   width: 100%;
 }
-.book-info{
+.book-info {
   padding: 1rem;
   text-align: center;
 }
-/* end of book */
 
-/* booklist */
+/***** End of Book *****/
+
+/***** BookList *****/
 .booklist {
   padding: 0 2rem 5rem 2rem;
 }
@@ -350,4 +367,4 @@ button{
   grid-column-gap: 30px;
 }
 
-/* end of booklist */
+/***** End of BookList *****/

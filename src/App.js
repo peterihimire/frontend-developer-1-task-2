@@ -4,6 +4,7 @@ import Banner from "./components/Banner";
 // import Footer from "./components/Footer";
 import BookList from "./components/BookList";
 import Navbar from "./components/Navbar";
+import MobileNav from "./components/MobileNav";
 import Form from "./components/Form";
 
 class App extends Component {
@@ -12,9 +13,22 @@ class App extends Component {
     sortedBooks: [],
     loading: true,
     bookOne: "",
+    isOpen: false,
   };
 
-  // For the form submit
+  // menu handler
+  openHandler = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  };
+  closeHandler = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
+
+  // Form submit Handler
   handleSubmit = (event) => {
     event.preventDefault();
     // console.log(bookOne);
@@ -68,7 +82,7 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
-  // For the form input
+  // Form input Handler
   handleChange = (event) => {
     event.preventDefault();
     const bookg = event.target.value;
@@ -80,7 +94,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <Navbar />
+        <Navbar openMenu={this.openHandler} />
+        <MobileNav
+          closeMenu={this.closeHandler}
+          openState={this.state.isOpen}
+        />
         <Banner />
         <Form forInput={this.handleChange} forForm={this.handleSubmit} />
         <BookList bookInfo={this.state.books} />
