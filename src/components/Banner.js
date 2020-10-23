@@ -8,7 +8,7 @@ function Banner() {
           <div className="banner-container">
             <h1>BOOK SEARCH</h1>
             <p>
-              A simple book search app. To search, simple input
+              A simple book search app. To search, simply input
               the ISBN number into the input field and click  search.{" "}
             </p>
           </div>
