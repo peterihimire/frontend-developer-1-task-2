@@ -1,0 +1,7 @@
+//UseState
+useState returns an array with exactly two elements. The first returned element will always be the current state, while the second returned element is always a function that allows us to update the state, react is aware of it and will re-render the component 
+
+
+
+Using react useEffect is like using componentDidMount and componentDidUpdate in one effect.
+For componentDidMount we will use useEffect with an empty array.
