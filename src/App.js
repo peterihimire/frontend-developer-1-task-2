@@ -1,3 +1,5 @@
+// USED REACT-HOOK USE-STATE FOR STATE MANAGEMENT
+
 import React, { useState } from "react";
 import "./App.css";
 import Banner from "./components/Banner";
@@ -8,14 +10,7 @@ import MobileNav from "./components/MobileNav";
 import Form from "./components/Form";
 
 const App = (props) => {
-  const [booksState, setBooksState] = useState({
-    books: [],
-  });
-  const [bookOne, setBookOneState] = useState({
-    bookOne: "",
-  });
-
-  // For Menu Toggle
+  // For Menu Handler
   const [menuState, setMenuState] = useState({
     isOpen: false,
   });
@@ -31,12 +26,29 @@ const App = (props) => {
     });
   };
 
-  // For Form and Search
+  // For Form-Result
+  const [bookState, setBookState] = useState({
+    bookOne: "",
+  });
+  const [booksState, setBooksState] = useState({
+    books: [],
+  });
+  // Form Input Handler
+  const changeHandler = (e) => {
+    e.preventDefault();
+
+    const bookg = e.target.value;
+
+    setBookState({ bookOne: bookg });
+    console.log(bookg);
+  };
+
+  // Submit Handler
   const submitHandler = (e) => {
     e.preventDefault();
 
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=isbn:${bookOne.bookOne}`
+      `https://www.googleapis.com/books/v1/volumes?q=isbn:${bookState.bookOne}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -84,15 +96,6 @@ const App = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const changeHandler = (e) => {
-    e.preventDefault();
-
-    const bookg = e.target.value;
-
-    setBookOneState({ bookOne: bookg });
-    console.log(bookg);
-  };
-
   return (
     <div>
       <>
@@ -108,6 +111,8 @@ const App = (props) => {
 };
 
 export default App;
+
+//  USED CLASS BASED COMPONENT FOR STATE MANAGEMENT
 
 // import React, { Component } from "react";
 // import "./App.css";
@@ -221,97 +226,202 @@ export default App;
 
 // export default App;
 
-// const getBook = () => {
-//   fetch('https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}')
-//     .then(response => console.log(response))
-// }
-// getBook()
-// return (
-//   <div className="App">
+// USED REACT-HOOK USEEFFECT IN THIS SECTION
 
-//   </div>
-// );
-// 0747532699
-// 9783161484100
+// import React, { useState, useEffect } from "react";
+// import "./App.css";
+// import Banner from "./components/Banner";
+// import BookList from "./components/BookList";
+// import Navbar from "./components/Navbar";
+// import MobileNav from "./components/MobileNav";
 
-// getBooks = () => {
-//   fetch("https://www.googleapis.com/books/v1/volumes?q=isbn:0747532699")
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//       let bookList = data.items[0];
-//       console.log(bookList.volumeInfo.authors);
+// const App = (props) => {
+//   // For Menu Handler
+//   const [menuState, setMenuState] = useState({
+//     isOpen: false,
+//   });
 
-//       let id = bookList.id;
-//       let authors = bookList.volumeInfo.authors;
-//       let rating = bookList.volumeInfo.averageRating;
-//       let categories = bookList.volumeInfo.categories;
-//       let description = bookList.volumeInfo.description;
-//       let language = bookList.volumeInfo.language;
-//       let pageCount = bookList.volumeInfo.pageCount;
-//       let publishedDate = bookList.volumeInfo.publishedDate;
-//       let publisher = bookList.volumeInfo.publisher;
-//       let title = bookList.volumeInfo.title;
-//       let image = bookList.volumeInfo.imageLinks.thumbnail;
+//   const openHandler = () => {
+//     setMenuState({
+//       isOpen: !menuState.isOpen,
+//     });
+//   };
+//   const closeHandler = () => {
+//     setMenuState({
+//       isOpen: false,
+//     });
+//   };
 
-//       let book = {
-//         authors,
-//         id,
-//         rating,
-//         categories,
-//         description,
-//         language,
-//         pageCount,
-//         publishedDate,
-//         publisher,
-//         title,
-//         image,
-//       };
-//       console.log(book);
-//       return book;
+//   // For Book Result
+//   const [booksState, setBooksState] = useState({
+//     books: [],
+//   });
 
-//       // const books = bookList.map((item) => {
-//       //   let id = item.id;
-//       //   let authors = item.volumeInfo.authors;
-//       //   let rating = item.volumeInfo.averageRating;
-//       //   let categories = item.volumeInfo.categories;cod
-//       //   let description = item.volumeInfo.description;
-//       //   let language = item.volumeInfo.language;
-//       //   let pageCount = item.volumeInfo.pageCount;
-//       //   let publishedDate = item.volumeInfo.publishedDate;
-//       //   let publisher = item.volumeInfo.publisher;
-//       //   let title = item.volumeInfo.title;
-//       //   let image = item.volumeInfo.imageLinks.thumbnail;
+//   // Get Books Handler
+//   const getBooks = (e) => {
+//     fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:9783161484100`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
 
-//       //   let book = {
-//       //     authors,
-//       //     id,
-//       //     rating,
-//       //     categories,
-//       //     description,
-//       //     language,
-//       //     pageCount,
-//       //     publishedDate,
-//       //     publisher,
-//       //     title,
-//       //     image,
-//       //   };
-//       //   console.log(book);
-//       //   return book;
-//       // });
-//       // return books;
-//     })
-//     .then((booksData) => {
-//       console.log(booksData);
-//       this.setState(() => {
-//         return {
-//           books: booksData,
-//         };
-//       });
-//     })
-//     .catch((err) => console.log(err));
+//         let bookList = data.items.map((item) => {
+//           let id = item.id;
+//           let authors = item.volumeInfo.authors;
+//           let rating = item.volumeInfo.averageRating;
+//           let categories = item.volumeInfo.categories;
+//           let description = item.volumeInfo.description;
+//           let language = item.volumeInfo.language;
+//           let pageCount = item.volumeInfo.pageCount;
+//           let publishedDate = item.volumeInfo.publishedDate;
+//           let publisher = item.volumeInfo.publisher;
+//           let title = item.volumeInfo.title;
+
+//           let book = {
+//             authors,
+//             id,
+//             rating,
+//             categories,
+//             description,
+//             language,
+//             pageCount,
+//             publishedDate,
+//             publisher,
+//             title,
+//           };
+//           console.log(book);
+//           return book;
+//         });
+//         // console.log(bookList)
+//         return bookList;
+//       })
+
+//       .then((booksData) => {
+//         console.log(booksData);
+//         setBooksState(() => {
+//           return {
+//             books: booksData,
+//           };
+//         });
+//       })
+//       .catch((err) => console.log(err));
+//   };
+
+//   useEffect(() => {
+//     getBooks();
+//   }, []);
+
+//   return (
+//     <div>
+//       <>
+//         <Navbar openMenu={openHandler} />
+//         <MobileNav closeMenu={closeHandler} openState={menuState.isOpen} />
+//         <Banner />
+//         <BookList bookInfo={booksState.books} />
+//       </>
+//     </div>
+//   );
 // };
 
-// componentDidMount() {
-//   this.getBooks();
+// export default App;
+
+// // USED CLASS-BASED COMPONENT-DID-MOUNT FOR THIS SECTION
+
+// import React, { Component } from "react";
+// import "./App.css";
+// import Banner from "./components/Banner";
+// import BookList from "./components/BookList";
+// import Navbar from "./components/Navbar";
+// import MobileNav from "./components/MobileNav";
+
+// class App extends Component {
+//   state = {
+//     books: [],
+//     isOpen: false,
+//   };
+
+//   // menu handler
+//   openHandler = () => {
+//     this.setState({
+//       isOpen: !this.state.isOpen,
+//     });
+//   };
+//   closeHandler = () => {
+//     this.setState({
+//       isOpen: false,
+//     });
+//   };
+
+//   // Form submit Handler
+//   getBooks = () => {
+//     // console.log(bookOne);
+
+//     fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:9783161484100`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
+
+//         let bookList = data.items.map((item) => {
+//           let id = item.id;
+//           let authors = item.volumeInfo.authors;
+//           let rating = item.volumeInfo.averageRating;
+//           let categories = item.volumeInfo.categories;
+//           let description = item.volumeInfo.description;
+//           let language = item.volumeInfo.language;
+//           let pageCount = item.volumeInfo.pageCount;
+//           let publishedDate = item.volumeInfo.publishedDate;
+//           let publisher = item.volumeInfo.publisher;
+//           let title = item.volumeInfo.title;
+
+//           let book = {
+//             authors,
+//             id,
+//             rating,
+//             categories,
+//             description,
+//             language,
+//             pageCount,
+//             publishedDate,
+//             publisher,
+//             title,
+//           };
+//           console.log(book);
+//           return book;
+//         });
+//         // console.log(bookList)
+//         return bookList;
+//       })
+
+//       .then((booksData) => {
+//         console.log(booksData);
+//         this.setState(() => {
+//           return {
+//             books: booksData,
+//           };
+//         });
+//       })
+//       .catch((err) => console.log(err));
+//   };
+
+//   componentDidMount() {
+//     this.getBooks();
+//   }
+
+//   render() {
+//     return (
+//       <>
+//         <Navbar openMenu={this.openHandler} />
+//         <MobileNav
+//           closeMenu={this.closeHandler}
+//           openState={this.state.isOpen}
+//         />
+//         <Banner />
+//         <BookList bookInfo={this.state.books} />
+//         {/* <Footer /> */}
+//       </>
+//     );
+//   }
 // }
+
+// export default App;
+// 0747532699
+// 9783161484100
