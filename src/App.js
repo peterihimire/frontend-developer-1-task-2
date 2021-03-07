@@ -287,7 +287,7 @@ export default App;
 //             publishedDate,
 //             publisher,
 //             title,
-//           };
+//           }; 
 //           console.log(book);
 //           return book;
 //         });
